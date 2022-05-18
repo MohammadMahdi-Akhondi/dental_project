@@ -1,0 +1,51 @@
+@font-face {
+    font-family: "Sahel";
+    src: url('../fonts/Sahel.eot');
+    src: url('../fonts/Sahel.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Sahel.woff2') format('woff2'),
+         url('../fonts/Sahel.woff') format('woff'),
+         url('../fonts/Sahel.ttf') format('truetype');
+    font-weight: normal;
+}
+
+html
+{
+    margin-left: 150px;
+    margin-right: 150px;
+    background-color: #f0f8ff;
+}
+
+body
+{
+    font-family: Sahel, sans-serif;
+    background-color: #f0f8ff;
+}
+
+h3
+{
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+nav div div div a
+{
+    margin-left: 12px;
+    border-radius: 10px;
+}
+
+nav div div div a:hover
+{
+    background-color: #808080;
+    color: black;
+}
+
+nav div div a img
+{
+    margin-left: 20px;
+}
+
+.filter-white
+{
+    filter: invert(93%) sepia(0%) saturate(7500%) hue-rotate(124deg) brightness(108%) contrast(109%);
+}
