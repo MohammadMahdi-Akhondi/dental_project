@@ -2,7 +2,7 @@
 <html lang="fa">
     <head>
         <meta charset="UTF-8">
-        <title>صفحه اصلی</title>
+        <title>صفحه اصلی | دندانپزشکی رجایی</title>
 
         <!-- Bootstrap links -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -34,6 +34,7 @@
                     <div class="navbar-nav" style="font-size: 17px">
                         <a class="nav-link active" aria-current="page" href="#">صفحه اصلی</a>
                         <a class="nav-link active" href="#">رزرو نوبت</a>
+                        <a class="nav-link active" href="#introduction">معرفی پزشکان</a>
                     </div>
                 </div>
                 <div class="collapse navbar-collapse" style="direction: ltr;">
@@ -75,8 +76,55 @@
             </button>
         </div>
 
-        <h3>معرفی پزشکان</h3>
+        <!-- content -->
+        <h3 id="introduction">معرفی پزشکان</h3>
 
+        <div class="row profile">
+            <div class="col">
+                <img src="img/dentist1.jpg" alt="avatar" width="250px" class="photos">
+            </div>
+            <div class="col info">
+                <p>نام : شاهین</p>
+                <p>نام خانوادگی :  رفیعی</p>
+                <p>مدرک : دندانپزشکی</p>
+                <p>سابقه : ۵ سال</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row profile">
+            <div class="col info">
+                <p>نام : محمد</p>
+                <p>نام خانوادگی :  ملکوتی</p>
+                <p>مدرک : دندانپزشکی</p>
+                <p>سابقه : ۸ سال</p>
+            </div>
+            <div class="col">
+                <img src="img/dentist2.png" alt="avatar" width="250px" class="photos">
+            </div>
+        </div>
+        <hr>
+        <div class="row profile">
+            <div class="col">
+                <img src="img/dentist1.jpg" alt="avatar" width="250px" class="photos">
+            </div>
+            <div class="col info">
+                <p>نام : معید</p>
+                <p>نام خانوادگی :  ذاکری</p>
+                <p>مدرک : دندانپزشکی</p>
+                <p>سابقه : ۳ سال</p>
+            </div>
+        </div>
+
+        <footer class="text-center text-white" style="background-color: #212529; direction: ltr;">
+
+            <!-- Copyright -->
+            <div class="text-center p-4">
+                <p>آدرس: تهران، لويزان، خيابان شهيد شعبانلو، دانشگاه تربيت دبير شهيد رجائی</p>
+                © 2022 Copyright:
+                <a class="text-white" href="#">Rajaee clinic</a>
+            </div>
+
+        </footer>
 
     </body>
 </html>

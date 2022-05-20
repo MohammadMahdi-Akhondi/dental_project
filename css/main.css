@@ -28,10 +28,25 @@ h3
     margin-bottom: 25px;
 }
 
+.photos
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 120px;
+}
+
+.info
+{
+    font-size: 18px;
+    text-align: center;
+    padding: 50px 0;
+}
+
 nav div div div a
 {
     margin-left: 12px;
-    border-radius: 10px;
+    border-radius: 4px;
 }
 
 nav div div div a:hover
@@ -48,4 +63,10 @@ nav div div a img
 .filter-white
 {
     filter: invert(93%) sepia(0%) saturate(7500%) hue-rotate(124deg) brightness(108%) contrast(109%);
+}
+
+.profile
+{
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
