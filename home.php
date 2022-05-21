@@ -1,5 +1,15 @@
 <?php
 include ("includes/header.php");
+
+$link = mysqli_connect("localhost", "root", "", "dental_clinic");
+
+if (mysqli_connect_errno())
+    exit("خطاي با شرح زير رخ داده است :" . mysqli_connect_error());
+
+$query = "SELECT * FROM dentist";
+
+$result = mysqli_query($link, $query);
+
 ?>
 
 <!-- slide show -->
@@ -33,45 +43,56 @@ include ("includes/header.php");
 <!-- content -->
 <h3 id="introduction">معرفی پزشکان</h3>
 
+<?php
+$counter = 0;
+while ($row = mysqli_fetch_array($result))
+{
+?>
+
+<?php
+if ($counter != 0){
+    echo "<hr>";
+}
+if ($counter % 2 == 0)
+{
+?>
+
 <div class="row profile">
     <div class="col">
         <img src="img/dentist1.jpg" alt="avatar" width="250px" class="photos">
     </div>
     <div class="col info">
-        <p>نام : شاهین</p>
-        <p>نام خانوادگی :  رفیعی</p>
-        <p>مدرک : دندانپزشکی</p>
-        <p>سابقه : ۵ سال</p>
+        <p>نام : <?php echo ($row['name'])?></p>
+        <p>نام خانوادگی : <?php echo ($row['family'])?></p>
+        <p>جنسیت : <?php if ($row['gender']=='m') echo "مرد"; else echo "زن";?></p>
+        <p>سابقه : <?php echo ($row['experience'])?> سال</p>
+        <p>شماره همراه : <?php echo ($row['phone'])?></p>
     </div>
 </div>
-<hr>
+
+    <?php
+}
+else
+{
+    ?>
+
 <div class="row profile">
     <div class="col info">
-        <p>نام : محمد</p>
-        <p>نام خانوادگی :  ملکوتی</p>
-        <p>مدرک : دندانپزشکی</p>
-        <p>سابقه : ۸ سال</p>
+        <p>نام : <?php echo ($row['name'])?></p>
+        <p>نام خانوادگی : <?php echo ($row['family'])?></p>
+        <p>جنسیت : <?php if ($row['gender']=='m') echo "مرد"; else echo "زن";?></p>
+        <p>سابقه : <?php echo ($row['experience'])?> سال</p>
+        <p>شماره همراه : <?php echo ($row['phone'])?></p>
     </div>
     <div class="col">
         <img src="img/dentist2.png" alt="avatar" width="250px" class="photos">
     </div>
 </div>
-<hr>
-<div class="row profile">
-    <div class="col">
-        <img src="img/dentist1.jpg" alt="avatar" width="250px" class="photos">
-    </div>
-    <div class="col info">
-        <p>نام : معید</p>
-        <p>نام خانوادگی :  ذاکری</p>
-        <p>مدرک : دندانپزشکی</p>
-        <p>سابقه : ۳ سال</p>
-    </div>
-</div>
-
-<?php
-
-?>
+    <?php
+}
+    $counter++;
+}
+    ?>
 
 <?php
 include ("includes/footer.php");
