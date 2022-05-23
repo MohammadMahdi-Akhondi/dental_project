@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="collapse navbar-collapse" style="direction: ltr;">
-            <a href="#" class="nav-link">
+            <a href="login.php" class="nav-link">
                 <img src="icons/right-to-bracket-solid.svg" alt="login" width="25px" class="filter-white">
             </a>
             <a href="register.php" class="nav-link">

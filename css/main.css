@@ -55,6 +55,17 @@ nav div div div a:hover
     color: black;
 }
 
+a
+{
+    text-decoration: none;
+    color: #e03d31;
+}
+
+a:hover
+{
+    color: grey;
+}
+
 nav div div a img
 {
     margin-left: 20px;
