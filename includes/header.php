@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fa">
 <head>
@@ -47,7 +51,3 @@
         </div>
     </div>
 </nav>
-
-<?php
-
-?>
