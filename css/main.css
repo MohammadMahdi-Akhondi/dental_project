@@ -97,3 +97,10 @@ nav div div a img
     margin-top: 50px;
     margin-bottom: 300px;
 }
+
+.name-header
+{
+    color: white;
+    padding-right: 10px;
+    padding-left: 10px;
+}

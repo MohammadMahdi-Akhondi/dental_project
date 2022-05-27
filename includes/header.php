@@ -25,7 +25,7 @@ session_start();
 <nav class="navbar navbar-light" style="background-color: #f0f8ff;">
     <div class="container-fluid" style="text-align: center">
         <span class="navbar-brand mb-3 mt-3" style="font-size: 30px">دندان پزشکی رجایی</span>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="home.php">
             <img src="img/logo.png" alt="logo" height="80">
         </a>
     </div>
@@ -36,18 +36,34 @@ session_start();
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav" style="font-size: 17px">
-                <a class="nav-link active" aria-current="page" href="home.php">صفحه اصلی</a>
+                <a class="nav-link active" href="home.php">صفحه اصلی</a>
                 <a class="nav-link active" href="#">رزرو نوبت</a>
-                <a class="nav-link active" href="#introduction">معرفی پزشکان</a>
+                <a class="nav-link active" href="home.php#introduction">معرفی پزشکان</a>
             </div>
         </div>
         <div class="collapse navbar-collapse" style="direction: ltr;">
+            <?php
+            if (isset($_SESSION['logged']) && $_SESSION['logged']===true)
+            {
+            ?>
+                <a href="logout.php" class="nav-link">
+                    <img src="icons/right-from-bracket-solid.svg" alt="logout" width="25px" class="filter-white">
+                </a>
+                <span class="name-header"><?php echo $_SESSION['full_name']?></span>
+            <?php
+            }
+            else
+            {
+            ?>
             <a href="login.php" class="nav-link">
                 <img src="icons/right-to-bracket-solid.svg" alt="login" width="25px" class="filter-white">
             </a>
             <a href="register.php" class="nav-link">
                 <img src="icons/user-plus-solid.svg" alt="register" width="25px" class="filter-white">
             </a>
+            <?php
+            }
+            ?>
         </div>
     </div>
 </nav>
