@@ -37,7 +37,7 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav" style="font-size: 17px">
                 <a class="nav-link active" href="home.php">صفحه اصلی</a>
-                <a class="nav-link active" href="#">رزرو نوبت</a>
+                <a class="nav-link active" href="book_turn.php">رزرو نوبت</a>
                 <a class="nav-link active" href="home.php#introduction">معرفی پزشکان</a>
             </div>
         </div>
