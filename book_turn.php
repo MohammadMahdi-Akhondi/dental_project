@@ -1,25 +1,60 @@
 <?php
 include ("includes/header.php");
+include ("includes/check_turn.php");
+
+$link = mysqli_connect("localhost", "root", "", "dental_clinic");
+
+if (mysqli_connect_errno())
+    exit("خطاي با شرح زير رخ داده است :" . mysqli_connect_error());
+
+$query_dentists = "SELECT id, name, family FROM dentist";
+
+$dentists = mysqli_query($link, $query_dentists);
+
+$turns_array = array();
+
+if(isset($_POST['submitButton'])){
+    $id_dentist = $_POST['dentist_id'];
+
+    $query_dentist_turn = "SELECT turn_id FROM turn WHERE dentist_id='$id_dentist'";
+    $turns_row = mysqli_query($link, $query_dentist_turn);
+
+    while ($row = mysqli_fetch_array($turns_row))
+    {
+        array_push($turns_array, $row['turn_id']);
+    }
+
+}
 ?>
 <h2 class="title">رزرو نوبت</h2>
 <div class="row justify-content-center text-center">
     <div class="col-md-5">
-        <form>
+        <form method="POST" action="#">
             <div class="input-group mt-5 mb-4" dir='ltr'>
-                <select class="form-select" id="doctor_name" dir='rtl'>
-                    <option value="1">شاهین</option>
-                    <option value="2">معید</option>
-                    <option value="3">محمد</option>
+                <select class="form-select" name="dentist_id" id="dentist_name" dir='rtl'>
+                    <?php
+                    while ($row = mysqli_fetch_array($dentists))
+                    {
+                        if (isset($id_dentist)) {
+                            if ($id_dentist==$row['id'])
+                                echo "<option value=".$row['id']." selected>".$row['name']." ".$row['family']."</option>";
+                            else
+                                echo "<option value=".$row['id'].">".$row['name']." ".$row['family']."</option>";
+                        }
+                        else
+                            echo "<option value=".$row['id'].">".$row['name']." ".$row['family']."</option>";
+                    }
+                    ?>
                 </select>
-                <label class="input-group-text" for="doctor_name">نام پزشک</label>
+                <label class="input-group-text" for="dentist_name">نام پزشک</label>
             </div>
-            <button type="submit" class="btn btn-primary mb-3">تایید</button>
+            <button type="submit" class="btn btn-primary mb-3" name="submitButton">تایید</button>
         </form>
     </div>
 </div>
-<form action="">
+<form action="action_book_turn.php" method="post">
     <div class="table-responsive mt-4">
-        <table class="table table-hover">
+        <table class="table table-striped">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">روز</th>
@@ -35,68 +70,65 @@ include ("includes/header.php");
             <tbody>
             <tr>
                 <th scope="row">شنبه</th>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
+                <?php
+                for ($i=1; $i < 8;$i++)
+                {
+                    check_turn($i,$turns_array);
+                }
+                ?>
             </tr>
             <tr>
                 <th scope="row">یک شنبه</th>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
+                <?php
+                for ($i=8; $i < 15;$i++)
+                {
+                    check_turn($i,$turns_array);
+                }
+                ?>
             </tr>
             <tr>
                 <th scope="row">دوشنبه</th>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
+                <?php
+                for ($i=15; $i < 22;$i++)
+                {
+                    check_turn($i,$turns_array);
+                }
+                ?>
             </tr>
             <tr>
                 <th scope="row">سه شنبه</th>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
+                <?php
+                for ($i=22; $i < 29;$i++)
+                {
+                    check_turn($i,$turns_array);
+                }
+                ?>
             </tr>
             <tr>
                 <th scope="row">چهارشنبه</th>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
+                <?php
+                for ($i=29; $i < 36;$i++)
+                {
+                    check_turn($i,$turns_array);
+                }
+                ?>
             </tr>
             <tr>
                 <th scope="row">پنجشنبه</th>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
-                <td><button type="submit" class="btn btn-success">رزرو</button></td>
+                <?php
+                for ($i=36; $i < 43;$i++)
+                {
+                    check_turn($i,$turns_array);
+                }
+                ?>
             </tr>
             </tbody>
         </table>
     </div>
+    <button type="submit" class="btn btn-success mb-3 text-center">ثبت</button>
 </form>
+
+
 <?php
 include ("includes/footer.php");
 ?>
