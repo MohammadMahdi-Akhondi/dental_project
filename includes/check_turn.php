@@ -7,7 +7,7 @@ function check_turn($turn_id, $turns)
         ?>
         <td>
             <label class="form-check-label" for="checkbox">رزرو</label>
-            <input class="form-check-input" type="radio" name="id_turn" id="checkbox" value="<?php echo "$turn_id"?>" disabled>
+            <input class="form-check-input" type="radio" name="turn_id" id="checkbox" value="<?php echo "$turn_id"?>" disabled>
         </td>
         <?php
     }
@@ -22,7 +22,7 @@ function check_turn($turn_id, $turns)
                     ?>
                     <td>
                         <label class="form-check-label text-danger" for="checkbox">رزرو شده</label>
-                        <input class="form-check-input" type="radio" name="id_turn" id="checkbox" value="<?php echo "$turn_id"?>" disabled>
+                        <input class="form-check-input" type="radio" name="turn_id" id="checkbox" value="<?php echo "$turn_id"?>" disabled>
                     </td>
                     <?php
                     return;
@@ -32,7 +32,7 @@ function check_turn($turn_id, $turns)
         ?>
         <td>
             <label class="form-check-label text-success" for="checkbox">رزرو</label>
-            <input class="form-check-input" type="radio" name="id_turn" id="checkbox" value="<?php echo "$turn_id"?>">
+            <input class="form-check-input" type="radio" name="turn_id" id="checkbox" value="<?php echo "$turn_id"?>">
         </td>
         <?php
     }

@@ -22,10 +22,10 @@ $dentists = mysqli_query($link, $query_dentists);
 
 $turns_array = array();
 
-if(isset($_POST['submitButton'])){
-    $id_dentist = $_POST['dentist_id'];
+if (isset($_POST['submitButton'])){
+    $dentist_id = $_POST['dentist_id'];
 
-    $query_dentist_turn = "SELECT turn_id FROM turn WHERE dentist_id='$id_dentist'";
+    $query_dentist_turn = "SELECT turn_id FROM turn WHERE dentist_id='$dentist_id'";
     $turns_row = mysqli_query($link, $query_dentist_turn);
 
     while ($row = mysqli_fetch_array($turns_row))
@@ -38,14 +38,17 @@ if(isset($_POST['submitButton'])){
 <h2 class="title">رزرو نوبت</h2>
 <div class="row justify-content-center text-center">
     <div class="col-md-5">
+        <div class="alert alert-info mt-3" role="alert">
+            ابتدا نام پزشک مورد نظر را انتخاب سپس تایید را بزنید.
+        </div>
         <form method="POST" action="#">
-            <div class="input-group mt-5 mb-4" dir='ltr'>
+            <div class="input-group mt-2 mb-4" dir='ltr'>
                 <select class="form-select" name="dentist_id" id="dentist_name" dir='rtl'>
                     <?php
                     while ($row = mysqli_fetch_array($dentists))
                     {
-                        if (isset($id_dentist)) {
-                            if ($id_dentist==$row['id'])
+                        if (isset($dentist_id)) {
+                            if ($dentist_id==$row['id'])
                                 echo "<option value=".$row['id']." selected>".$row['name']." ".$row['family']."</option>";
                             else
                                 echo "<option value=".$row['id'].">".$row['name']." ".$row['family']."</option>";
@@ -134,6 +137,14 @@ if(isset($_POST['submitButton'])){
             </tbody>
         </table>
     </div>
+    <?php
+    if (isset($_POST['submitButton']))
+    {
+        ?>
+        <input type="text" name="dentist_id" value="<?php echo $dentist_id ?>" hidden>
+        <?php
+    }
+    ?>
     <button type="submit" class="btn btn-success mb-3 text-center">ثبت</button>
 </form>
 
