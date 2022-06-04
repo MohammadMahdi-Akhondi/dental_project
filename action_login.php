@@ -27,8 +27,7 @@ if ($row) {
     $_SESSION["full_name"] = $name." ".$family;
     $_SESSION["national_code"] = $row['national_code'];
 
-    echo ("<p style='color:green;' class='information'><b>".$name." ".$family." گرامی به دندانپزشکی رجایی خوش آمدید.<b></p>");
-} else
+    echo ("<p style='color:green;' class='information'><b>".$name." ".$family." گرامی به دندانپزشکی رجایی خوش آمدید.<b><br>برای رزرو نوبت از <a href='book_turn.php'>اینجا </a>اقدام کنید</p>");} else
     echo ("<p style='color:red;'><b>نام كاربري يا كلمه عبور يافت نشد</b></p>");
 
 

@@ -2,6 +2,15 @@
 include ("includes/header.php");
 include ("includes/check_turn.php");
 
+if (!(isset($_SESSION["logged"]) && $_SESSION["logged"] === true))
+{
+    ?>
+    <script type="text/javascript">
+        location.replace("home.php");
+    </script>
+    <?php
+}
+
 $link = mysqli_connect("localhost", "root", "", "dental_clinic");
 
 if (mysqli_connect_errno())

@@ -41,6 +41,16 @@ $result = mysqli_query($link, $query);
 </div>
 
 <!-- content -->
+<?php
+if (!(isset($_SESSION["logged"]) && $_SESSION["logged"] === true))
+{
+    ?>
+    <div class="alert alert-warning mt-3" role="alert">
+    توجه: برای رزرو نوبت باید <a href="login.php">وارد حساب</a>  شوید.
+    </div>
+    <?php
+}
+?>
 <h3 id="introduction">معرفی پزشکان</h3>
 
 <?php
